@@ -1,0 +1,27 @@
+###addBook
+POST http://localhost:3000/books
+Content-Type: application/json
+
+{
+    "nama": "Understanding React",
+    "author": "John H",
+    "published": "1998"
+}
+
+###find books
+GET http://localhost:3000/books
+
+
+###updateBook
+PATCH http://localhost:3000/books/0b7162df-1cae-4c58-91d8-cc7ba9b9fe9d
+Content-Type: application/json
+
+{
+    "nama": "Understanding React",
+    "author": "John Ibrahim",
+    "published": "1992"
+}
+
+
+###deleteBook
+DELETE http://localhost:3000/books/0b7162df-1cae-4c58-91d8-cc7ba9b9fe9d

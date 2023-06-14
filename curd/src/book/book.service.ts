@@ -1,17 +1,32 @@
+import { v4 as uuidv4 } from 'uuid';
+import { Book } from './interface/book.dto';
+
 export class BookService {
-  addBook(): string {
-    return 'add a new book';
+  public books: Book[] = [];
+
+  addBook(book: Book): Book {
+    book.id = uuidv4();
+    this.books.push(book);
+    return book;
   }
 
-  findBooks(): string {
-    return 'find all books';
+  findBooks(): Book[] {
+    return this.books;
   }
 
-  updateBook(): string {
-    return 'update a book';
+  updateBook(id: string, book: Book): Book {
+    const findIndex = this.books.findIndex(
+      (currentBook) => currentBook.id === id,
+    );
+
+    book.id = id;
+    this.books[findIndex] = book;
+    return (this.books[findIndex] = book);
   }
 
-  deleteBook(): string {
-    return 'delete a book';
+  deleteBook(id: string): Book {
+    const findBook = this.books.find((currentBook) => currentBook.id === id);
+    this.books = this.books.filter((currentBook) => currentBook.id !== id);
+    return findBook;
   }
 }
