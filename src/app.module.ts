@@ -1,21 +1,10 @@
-import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { BookModule } from './book/book.module';
-import { NextFunction, Request, Response } from 'express';
-
-function fnLoad(req: Request, res: Response, next: NextFunction) {
-  console.log('root module function middleware');
-  next();
-}
+import { Module } from '@nestjs/common';
+import { AuthModule } from './auth/auth.module';
+import { TaskModule } from './task/task.module';
 
 @Module({
-  imports: [BookModule],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [AuthModule, TaskModule],
+  controllers: [],
+  providers: [],
 })
-export class AppModule implements NestModule {
-  configure(consumer: MiddlewareConsumer) {
-    consumer.apply(fnLoad).forRoutes('*');
-  }
-}
+export class AppModule {}

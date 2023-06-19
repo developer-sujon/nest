@@ -1,2 +1,20 @@
-### health check
-GET http://localhost:3000/book
+###signin
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "mobile": "+8801777777775",
+    "password": "seyam1234@"
+}
+
+###addTask
+POST http://localhost:3000/tasks
+Content-Type: application/json
+
+{
+    "mobile": "+8801777777775",
+    "password": "seyam1234@2"
+}
+
+###getTasks
+GET http://localhost:3000/tasks
