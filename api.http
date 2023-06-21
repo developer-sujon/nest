@@ -1,27 +1,27 @@
 ###addBook
-POST http://localhost:3000/books
+POST http://localhost:3000/tasks
 Content-Type: application/json
 
 {
-    "nama": "Understanding React",
-    "author": "John H",
-    "published": "1998"
+    "title": "Understanding React",
+    "descrition": "John H"
 }
 
-###find books
-GET http://localhost:3000/books
+### find all tasks
+GET http://localhost:3000/tasks
+
+### find one task
+GET http://localhost:3000/tasks/567d7605-70ff-4c7e-9398-27f01dd81304
 
 
-###updateBook
-PATCH http://localhost:3000/books/0b7162df-1cae-4c58-91d8-cc7ba9b9fe9d
+### update task
+PATCH http://localhost:3000/tasks/54c13861-137c-4f8e-ae0c-2939c961e9fc
 Content-Type: application/json
 
 {
-    "nama": "Understanding React",
-    "author": "John Ibrahim",
-    "published": "1992"
+    "status": "COMPLETE"
 }
 
 
 ###deleteBook
-DELETE http://localhost:3000/books/0b7162df-1cae-4c58-91d8-cc7ba9b9fe9d
+DELETE http://localhost:3000/tasks/d98c928a-7941-40db-baad-d2c9630cef21
