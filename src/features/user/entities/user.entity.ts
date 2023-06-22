@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, Types } from 'mongoose';
 import * as bcrypt from 'bcrypt';
 import { RoleEnum } from 'src/constant';
 
@@ -25,6 +25,11 @@ export class User extends Document {
 
   @Prop({ type: String, enum: RoleEnum, defaultValue: RoleEnum.ADMIN })
   role: string;
+
+  // For comparing passwords
+  comparePassword(password: string) {
+    return bcrypt.compareSync(password, this.password);
+  }
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
@@ -39,12 +44,27 @@ UserSchema.pre<User>('save', async function (next) {
   next();
 });
 
-/**
- * Check if password matches the user's password
- */
+// /**
+//  * Check if password matches the user's password
+//  */
 UserSchema.methods.isPasswordMatch = async function (
   password: string,
 ): Promise<boolean> {
   const user = this;
   return bcrypt.compare(password, user.password);
 };
+
+// UserSchema.statics = {
+//   isEmailTaken: async function (
+//     email: string,
+//     excludeUserId: Types.ObjectId,
+//   ): Promise<boolean> {
+//     const user = await this.findOne({
+//       email,
+//       _id: {
+//         $ne: excludeUserId,
+//       },
+//     });
+//     return !!user;
+//   },
+// };

@@ -1,41 +1,27 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import bcrypt from 'bcrypt';
-import { JwtService } from '@nestjs/jwt';
+import * as bcrypt from 'bcrypt';
 
-import { User } from './schemas/user.schema';
 import { SignUpDto } from './dto/signup.dto';
 import { LoginDto } from './dto/login.dto';
+import { TokenService } from '../token/token.service';
+import { UserService } from './../user/user.service';
 
 @Injectable()
 export class AuthService {
   constructor(
-    @InjectModel(User.name)
-    private userModel: Model<User>,
-    private jwtService: JwtService,
+    private userService: UserService,
+    private tokenService: TokenService,
   ) {}
 
-  async signUp(signUpDto: SignUpDto): Promise<{ token: string }> {
-    const { name, email, password } = signUpDto;
-
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    const user = await this.userModel.create({
-      name,
-      email,
-      password: hashedPassword,
-    });
-
-    const token = this.jwtService.sign({ id: user._id });
-
-    return { token };
+  async signUp(signUpDto: SignUpDto): Promise<string> {
+    const user = await this.userService.createUser(signUpDto);
+    return this.tokenService.generateAuthTokens(user);
   }
 
-  async login(loginDto: LoginDto): Promise<{ token: string }> {
+  async login(loginDto: LoginDto): Promise<string> {
     const { email, password } = loginDto;
 
-    const user = await this.userModel.findOne({ email });
+    const user = await this.userService.getUserByEmail(email);
 
     if (!user) {
       throw new UnauthorizedException('Invalid email or password');
@@ -47,8 +33,6 @@ export class AuthService {
       throw new UnauthorizedException('Invalid email or password');
     }
 
-    const token = this.jwtService.sign({ id: user._id });
-
-    return { token };
+    return this.tokenService.generateAuthTokens(user);
   }
 }

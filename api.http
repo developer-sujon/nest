@@ -3,9 +3,9 @@ POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-    "title": "Vue",
-    "status": "COMPLETE",
-    "description": "is a simple"
+    "name": "Mohammad Sujon",
+    "email": "connect@devsujon.com",
+    "password": "pass1234@"
 }
 
 ### find all tasks
