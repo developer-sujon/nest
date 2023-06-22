@@ -1,3 +1,4 @@
+import { FilterTaskDto } from './dto/filter-task.dto';
 import {
   Controller,
   Get,
@@ -6,24 +7,30 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
+  UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
 import { TasksService } from './tasks.service';
 import { CreateTaskDto } from './dto/create-task.dto';
-import { UpdateTaskDto } from './dto/update-task.dto';
 import { TaskStatus } from './entities/task.entity';
+import { TaskStatusValidator } from './pipes/task-status-validation.pipe';
 
 @Controller('tasks')
 export class TasksController {
   constructor(private readonly tasksService: TasksService) {}
 
   @Post()
+  @UsePipes(ValidationPipe)
   create(@Body() createTaskDto: CreateTaskDto) {
     return this.tasksService.create(createTaskDto);
   }
 
   @Get()
-  findAll() {
-    return this.tasksService.findAll();
+  findAll(@Query() filterTaskDto: FilterTaskDto) {
+    console.log(filterTaskDto);
+
+    return this.tasksService.findAll(filterTaskDto);
   }
 
   @Get(':id')
@@ -32,12 +39,16 @@ export class TasksController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body('status') status: TaskStatus) {
+  update(
+    @Param('id') id: string,
+    @Body('status', new TaskStatusValidator()) status: TaskStatus,
+  ) {
     return this.tasksService.updateStatus(id, status);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.tasksService.remove(id);
+    const task = this.findOne(id);
+    return this.tasksService.remove(task.id);
   }
 }
