@@ -33,8 +33,8 @@ UserSchema.pre<User>('save', async function (next) {
   if (!this.isModified('password')) {
     return next();
   }
-  const saltRounds = process.env.PASSWORD_SALT_ROUNDS;
-  const hashedPassword = await bcrypt.hash(this.password, saltRounds);
+  const saltRounds = process.env.PASSWORD_SALT_ROUNDS || 10;
+  const hashedPassword = await bcrypt.hash(this.password, Number(saltRounds));
   this.password = hashedPassword;
   next();
 });

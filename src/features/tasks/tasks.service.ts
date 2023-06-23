@@ -5,9 +5,11 @@ import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
 import { Task, TaskStatus } from './entities/task.entity';
 import { FilterTaskDto } from './dto/filter-task.dto';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class TasksService {
+  constructor(private configService: ConfigService) {}
   private tasks: Task[] = [];
 
   create(createTaskDto: CreateTaskDto): Task {
@@ -22,6 +24,10 @@ export class TasksService {
 
   findAll(filterTask: FilterTaskDto): Task[] {
     let tasks = this.tasks;
+
+    const dbUser = this.configService.get<string>('database.port');
+
+    console.log(dbUser);
 
     const { status, search } = filterTask;
 

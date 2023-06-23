@@ -4,12 +4,21 @@ Content-Type: application/json
 
 {
     "name": "Mohammad Sujon",
-    "email": "connect@devsujon.com",
+    "email": "connectd@devsujon.in",
     "password": "pass1234@"
+}
+###
+POST http://localhost:3000/auth/signin
+Content-Type: application/json
+
+{
+    "name": "Mohammad Sujon",
+    "email": "connectd@devsujon.in",
+    "password": "pass1s234@"
 }
 
 ### find all tasks
-GET http://localhost:3000/tasks?status=NEW&search=Vue 
+GET http://localhost:3000/tasks 
 
 ### find one task
 GET http://localhost:3000/tasks/567d7605-70ff-4c7e-9398-27f01dd81304

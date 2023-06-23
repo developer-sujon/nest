@@ -1,4 +1,3 @@
-import { FilterTaskDto } from './dto/filter-task.dto';
 import {
   Controller,
   Get,
@@ -10,11 +9,15 @@ import {
   Query,
   UsePipes,
   ValidationPipe,
+  UseGuards,
 } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
+
 import { TasksService } from './tasks.service';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { TaskStatus } from './entities/task.entity';
 import { TaskStatusValidator } from './pipes/task-status-validation.pipe';
+import { FilterTaskDto } from './dto/filter-task.dto';
 
 @Controller('tasks')
 export class TasksController {
@@ -27,6 +30,7 @@ export class TasksController {
   }
 
   @Get()
+  @UseGuards(AuthGuard('jwt'))
   findAll(@Query() filterTaskDto: FilterTaskDto) {
     console.log(filterTaskDto);
 
