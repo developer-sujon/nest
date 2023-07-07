@@ -1,19 +1,9 @@
 import { Module } from '@nestjs/common';
-import { ConfigurationModule } from './config/config.module';
-import { DatabaseModule } from './database/database.module';
-import { UserModule } from './features/user/user.module';
-import { AuthModule } from './features/auth/auth.module';
-import { TasksModule } from './features/tasks/tasks.module';
-
+import { AccountModule } from './account/account.module';
+import { CacheModule } from './cache/cache.module';
+import { UserModule } from './user/user.module';
 @Module({
-  imports: [
-    ConfigurationModule,
-    DatabaseModule,
-    UserModule,
-    AuthModule,
-    TasksModule,
-  ],
   controllers: [],
-  providers: [],
+  imports: [AccountModule, CacheModule, UserModule],
 })
 export class AppModule {}
