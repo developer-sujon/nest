@@ -1,17 +1,10 @@
 import { Module } from '@nestjs/common';
-import { AccountModule } from './account/account.module';
-import { CacheModule } from './cache/cache.module';
-import { UserModule } from './user/user.module';
-import { ConfigModule } from './config/config.module';
-import { DatabaseModule } from './database/database.module';
+import { UsersModule } from './features/users/users.module';
+import { EmployersModule } from './features/employers/employers.module';
+import { AccountsModule } from './features/accounts/accounts.module';
+
 @Module({
   controllers: [],
-  imports: [
-    DatabaseModule,
-    AccountModule,
-    CacheModule,
-    UserModule,
-    ConfigModule,
-  ],
+  imports: [UsersModule, EmployersModule, AccountsModule],
 })
 export class AppModule {}
