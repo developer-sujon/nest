@@ -1,13 +1,9 @@
 import { Module } from '@nestjs/common';
-import { EnvModule } from './config/env.module';
-import { DatabaseModule } from './database/database.module';
-import { AuthModule } from './features/auth/auth.module';
-import { TasksModule } from './features/tasks/tasks.module';
-import { UserModule } from './features/user/user.module';
-import { TokenModule } from './features/token/token.module';
+import { JobsModule } from './features/jobs/jobs.module';
+import { UsersModule } from './features/users/users.module';
 
 @Module({
-  imports: [EnvModule, DatabaseModule, TokenModule, AuthModule, UserModule],
+  imports: [JobsModule, UsersModule],
   controllers: [],
   providers: [],
 })
