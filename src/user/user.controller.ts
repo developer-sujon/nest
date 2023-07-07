@@ -15,11 +15,18 @@ import { CacheService } from 'src/cache/cache.service';
 
 @Controller('user')
 export class UserController {
+  userService: any;
+  // constructor(
+  //   // @Inject('userProvider') private readonly userService: UserService,
+  //   // @Inject(UserService) private readonly userService: UserService, // private readonly userService: UserService,
+  // ) {
+  //   console.log(userService);
+  // }
+
   constructor(
-    // @Inject('userProvider') private readonly userService: UserService,
-    @Inject(UserService) private readonly userService: UserService, // private readonly userService: UserService,
+    @Inject('DATABASE_CONNECTION') private databaseConnection: string,
   ) {
-    console.log(userService);
+    console.log(databaseConnection);
   }
 
   @Post()

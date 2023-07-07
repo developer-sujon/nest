@@ -4,7 +4,5 @@ import { Controller, Inject } from '@nestjs/common';
 export class DatabaseController {
   constructor(
     @Inject('DATABASE_CONNECTION') private databaseConnection: string,
-  ) {
-    console.log(databaseConnection);
-  }
+  ) {}
 }

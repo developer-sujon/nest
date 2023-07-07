@@ -26,5 +26,26 @@ const isInternetConnectionAvailable: boolean = true;
       useValue: { url: 'mongodb://127.0.0.1:27017', pass: '', user: '' },
     },
   ],
+  exports: [
+    {
+      provide: 'DATABASE_CONNECTION',
+      useFactory: async (dbOptions) => {
+        let result = isInternetConnectionAvailable
+          ? dbOptions
+          : 'no internet connection available';
+
+        let response = await axios(
+          'https://jsonplaceholder.typicode.com/posts',
+        );
+
+        return response.data[0];
+      },
+      inject: ['dbOptions'],
+    },
+    {
+      provide: 'dbOptions',
+      useValue: { url: 'mongodb://127.0.0.1:27017', pass: '', user: '' },
+    },
+  ],
 })
 export class DatabaseModule {}
