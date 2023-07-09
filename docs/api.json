@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "e96fefbf-8761-465a-b655-0927d10ec3cf",
-		"name": "LECTURE-20",
+		"name": "auth local",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "20484049"
 	},
