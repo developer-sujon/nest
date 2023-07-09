@@ -1,20 +1,42 @@
-import { Module, ValidationPipe } from '@nestjs/common';
-import { APP_PIPE, APP_FILTER } from '@nestjs/core';
-import { TasksModule } from './tasks/tasks.module';
-import { AppExceptionFilter } from './exceptions/app-exception.filter';
+import {
+  BeforeApplicationShutdown,
+  Module,
+  OnApplicationBootstrap,
+  OnApplicationShutdown,
+} from '@nestjs/common';
+import { JobsModule } from './jobs/jobs.module';
+import { MeetingsModule } from './meetings/meetings.module';
+
+async function registerApp() {
+  return new Promise((resolve) => resolve('Registered'));
+}
+
+async function unregisterApp() {
+  return new Promise((resolve) => resolve('Unregistered'));
+}
 
 @Module({
-  imports: [TasksModule],
-  controllers: [],
-  providers: [
-    {
-      provide: APP_PIPE,
-      useClass: ValidationPipe,
-    },
-    // marking `AppExceptionFilter` global
-    // we can also declare it in `main.ts` but then DI (Dependency Injection) will not work
-    // and we need to pass the HttpAdapterHost explicitly in the `main.ts`
-    { provide: APP_FILTER, useClass: AppExceptionFilter },
-  ],
+  imports: [JobsModule, MeetingsModule],
 })
-export class AppModule {}
+export class AppModule
+  implements
+    OnApplicationBootstrap,
+    BeforeApplicationShutdown,
+    OnApplicationShutdown
+{
+  onApplicationBootstrap() {
+    console.log('Application bootstrap');
+    // register with gateway
+    registerApp();
+  }
+
+  beforeApplicationShutdown(signal?: string) {
+    console.log('Before Application shutdown', signal);
+    // unregister from gateway
+    unregisterApp();
+  }
+
+  onApplicationShutdown(signal?: string) {
+    console.log('Application shutdown', signal);
+  }
+}
