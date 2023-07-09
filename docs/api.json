@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "e96fefbf-8761-465a-b655-0927d10ec3cf",
-		"name": "LECTURE-20",
+		"_postman_id": "a4460c76-4856-4b69-8d76-5003c6cfb8d5",
+		"name": "LECTURE-24",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "20484049"
 	},
@@ -10,44 +10,60 @@
 			"name": "Jobs",
 			"item": [
 				{
-					"name": "Get Job By Id (ParseIntPipe)",
+					"name": "Create Job",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"companyName\": \"Marvel\",\n    \"title\": \"Thor Love and Thunder\",\n    \"email\": \"email@email.com\",\n    \"experience\": 5,\n    \"salary\": 345.34\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:3000/jobs/4",
+							"raw": "http://localhost:3000/jobs",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"jobs",
-								"4"
+								"jobs"
 							]
 						}
 					},
 					"response": [
 						{
-							"name": "Get Job By Id (ParseIntPipe)",
+							"name": "Default Values: Create Job",
 							"originalRequest": {
-								"method": "GET",
+								"method": "POST",
 								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"companyName\": \"Marvel\",\n    \"title\": \"Thor Love and Thunder\",\n    \"email\": \"email@email.com\",\n    \"experience\": 5,\n    \"salary\": 345.34\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
 								"url": {
-									"raw": "http://localhost:3000/jobs/4",
+									"raw": "http://localhost:3000/jobs",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"port": "3000",
 									"path": [
-										"jobs",
-										"4"
+										"jobs"
 									]
 								}
 							},
-							"status": "OK",
-							"code": 200,
+							"status": "Created",
+							"code": 201,
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
@@ -60,15 +76,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "217"
+									"value": "165"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"d9-/RHTF78d8vNy/hGPYAbEqmi7CHQ\""
+									"value": "W/\"a5-6Xtp7hoPCY4WckXckmnLz1B/irY\""
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 01 May 2022 22:02:27 GMT"
+									"value": "Sun, 01 May 2022 23:20:31 GMT"
 								},
 								{
 									"key": "Connection",
@@ -80,23 +96,31 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"companyName\": \"Marval\",\n    \"title\": \"Dr. Strange\",\n    \"email\": \"abc@mail.com\",\n    \"type\": 1,\n    \"experience\": 4,\n    \"salary\": 450.65,\n    \"tags\": [\n        \"nodejs\",\n        \"nestjs\",\n        \"rest api\"\n    ],\n    \"isActive\": true,\n    \"refId\": \"d53284ea-9150-422e-895f-93917d3d9ab7\",\n    \"id\": 4\n}"
+							"body": "{\n    \"companyName\": \"Marvel\",\n    \"title\": \"Thor Love and Thunder\",\n    \"email\": \"email@email.com\",\n    \"experience\": 5,\n    \"salary\": 345.34,\n    \"id\": 1,\n    \"type\": \"FULL_TIME\",\n    \"tags\": [],\n    \"isActive\": true\n}"
 						},
 						{
-							"name": "Validation Failed: Bad Request",
+							"name": "Validation Errors: tags",
 							"originalRequest": {
-								"method": "GET",
+								"method": "POST",
 								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"companyName\": \"Marvel\",\n    \"title\": \"Thor Love and Thunder\",\n    \"email\": \"email@email.com\",\n    \"type\": \"FREELANCER\",\n    \"tags\": [12, 45],\n    \"experience\": \"xyz\",\n    \"salary\": 345.34\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
 								"url": {
-									"raw": "http://localhost:3000/jobs/k",
+									"raw": "http://localhost:3000/jobs",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"port": "3000",
 									"path": [
-										"jobs",
-										"k"
+										"jobs"
 									]
 								}
 							},
@@ -114,15 +138,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "99"
+									"value": "63"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"63-BAojB7qX+mLY6LkS424DwNJnIw8\""
+									"value": "W/\"3f-G+VvuMLuzyjHjiXA4KXecRCxvWQ\""
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 02 Jul 2022 07:59:19 GMT"
+									"value": "Sun, 01 May 2022 23:30:57 GMT"
 								},
 								{
 									"key": "Connection",
@@ -134,302 +158,16 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"statusCode\": 400,\n    \"message\": \"Validation failed (numeric string is expected)\",\n    \"error\": \"Bad Request\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Get Job Details (HttpStatus Option)",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/jobs/details/k",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"jobs",
-								"details",
-								"k"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Custom Http Status Code: Validation Failed",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:3000/jobs/details/k",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"jobs",
-										"details",
-										"k"
-									]
-								}
-							},
-							"status": "Not Acceptable",
-							"code": 406,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "102"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"66-hpQBo9iHJ6uQ9gurz5R912vfp9M\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 02 Jul 2022 08:00:39 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"statusCode\": 406,\n    \"message\": \"Validation failed (numeric string is expected)\",\n    \"error\": \"Not Acceptable\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Inc Salary (UsePipes - ParseIntPipe)",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/jobs/inc-salary/4?increment=150",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"jobs",
-								"inc-salary",
-								"4"
-							],
-							"query": [
-								{
-									"key": "increment",
-									"value": "150"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Inc Salary (UsePipes - ParseIntPipe)",
-							"originalRequest": {
-								"method": "PUT",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:3000/jobs/inc-salary/4?increment=150",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"jobs",
-										"inc-salary",
-										"4"
-									],
-									"query": [
-										{
-											"key": "increment",
-											"value": "150"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "217"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"d9-QIHm7+b5c2zFLbV6REbc3/3wq9o\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 02 Jul 2022 08:05:07 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"companyName\": \"Marval\",\n    \"title\": \"Dr. Strange\",\n    \"email\": \"abc@mail.com\",\n    \"type\": 1,\n    \"experience\": 4,\n    \"salary\": 600.65,\n    \"tags\": [\n        \"nodejs\",\n        \"nestjs\",\n        \"rest api\"\n    ],\n    \"isActive\": true,\n    \"refId\": \"d53284ea-9150-422e-895f-93917d3d9ab7\",\n    \"id\": 4\n}"
-						}
-					]
-				},
-				{
-					"name": "Inc Salary (ParseFloatPipe)",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/jobs/salary/4?increment=150.20",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"jobs",
-								"salary",
-								"4"
-							],
-							"query": [
-								{
-									"key": "increment",
-									"value": "150.20"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Inc Salary (ParseFloatPipe)",
-							"originalRequest": {
-								"method": "PUT",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:3000/jobs/salary/4?increment=150.20",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"jobs",
-										"salary",
-										"4"
-									],
-									"query": [
-										{
-											"key": "increment",
-											"value": "150.20"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "228"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"e4-+RhWT2srOF32qr71ykkwwfBrCf8\""
-								},
-								{
-									"key": "Date",
-									"value": "Sun, 01 May 2022 22:04:24 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"companyName\": \"Marval\",\n    \"title\": \"Dr. Strange\",\n    \"email\": \"abc@mail.com\",\n    \"type\": 1,\n    \"experience\": 4,\n    \"salary\": 600.8499999999999,\n    \"tags\": [\n        \"nodejs\",\n        \"nestjs\",\n        \"rest api\"\n    ],\n    \"isActive\": true,\n    \"refId\": \"d53284ea-9150-422e-895f-93917d3d9ab7\",\n    \"id\": 4\n}"
-						}
-					]
-				},
-				{
-					"name": "Toggle Active Status (ParseBoolPipe)",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"active\": \"false\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"body": "{\n    \"error\": \"Validation failed\",\n    \"message\": \"tags must be a string\"\n}"
 						},
-						"url": {
-							"raw": "http://localhost:3000/jobs/active/4",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"jobs",
-								"active",
-								"4"
-							]
-						}
-					},
-					"response": [
 						{
-							"name": "Toggle Active Status (ParseBoolPipe)",
+							"name": "Validation Error: companyName",
 							"originalRequest": {
-								"method": "PUT",
+								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"active\": \"false\"\n}",
+									"raw": "{\n    \"title\": \"Thor Love and Thunder\",\n    \"email\": \"email@email.com\",\n    \"experience\": 5,\n    \"salary\": 345.34\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -437,21 +175,19 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:3000/jobs/active/4",
+									"raw": "http://localhost:3000/jobs",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"port": "3000",
 									"path": [
-										"jobs",
-										"active",
-										"4"
+										"jobs"
 									]
 								}
 							},
-							"status": "OK",
-							"code": 200,
+							"status": "Bad Request",
+							"code": 400,
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
@@ -464,15 +200,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "229"
+									"value": "65"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"e5-pwywH6h/c2S7VPgpUBmGiy84Xas\""
+									"value": "W/\"41-CmhjBN25Eh54MBkRRKX/ZsvDVDA\""
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 01 May 2022 22:05:45 GMT"
+									"value": "Sat, 09 Jul 2022 21:17:15 GMT"
 								},
 								{
 									"key": "Connection",
@@ -484,112 +220,313 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"companyName\": \"Marval\",\n    \"title\": \"Dr. Strange\",\n    \"email\": \"abc@mail.com\",\n    \"type\": 1,\n    \"experience\": 4,\n    \"salary\": 600.8499999999999,\n    \"tags\": [\n        \"nodejs\",\n        \"nestjs\",\n        \"rest api\"\n    ],\n    \"isActive\": false,\n    \"refId\": \"d53284ea-9150-422e-895f-93917d3d9ab7\",\n    \"id\": 4\n}"
+							"body": "{\n    \"error\": \"Validation failed\",\n    \"message\": \"companyName is required\"\n}"
+						},
+						{
+							"name": "Validation Error: title",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"companyName\": \"Marvel\",\n    \"email\": \"email@email.com\",\n    \"experience\": 5,\n    \"salary\": 345.34\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/jobs",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"jobs"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "59"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3b-1MBFEnQU6jearXK3RyGJ3WhK5RI\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 09 Jul 2022 21:17:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Validation failed\",\n    \"message\": \"title is required\"\n}"
+						},
+						{
+							"name": "Validation Error: email",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"companyName\": \"Marvel\",\n    \"title\": \"Thor Love and Thunder\",\n    \"experience\": 5,\n    \"salary\": 345.34\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/jobs",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"jobs"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "59"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3b-ceWWpejDCI5U5FmdZCalMKc5+ck\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 09 Jul 2022 21:18:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Validation failed\",\n    \"message\": \"email is required\"\n}"
+						},
+						{
+							"name": "Validation Error: salary",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"companyName\": \"Marvel\",\n    \"title\": \"Thor Love and Thunder\",\n    \"email\": \"email@email.com\",\n    \"experience\": 5\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/jobs",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"jobs"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "60"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3c-g+HpnasY52WVU6c1g5T8xIUo9r8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 09 Jul 2022 21:19:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Validation failed\",\n    \"message\": \"salary is required\"\n}"
+						},
+						{
+							"name": "Validation Error: experience",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"companyName\": \"Marvel\",\n    \"title\": \"Thor Love and Thunder\",\n    \"email\": \"email@email.com\",\n    \"salary\": 345.34\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/jobs",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"jobs"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "64"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"40-3ac1uLCjjnMcDdhfFITLhQ9CWB8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 09 Jul 2022 21:19:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Validation failed\",\n    \"message\": \"experience is required\"\n}"
 						}
 					]
 				},
 				{
-					"name": "Update Job Exp (DefaultValuePipe)",
+					"name": "Experience Field: Create Job - No Transformation",
 					"request": {
-						"method": "PUT",
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"companyName\": \"Marvel\",\n    \"title\": \"Thor Love and Thunder\",\n    \"email\": \"email@email.com\",\n    \"experience\": \"5\",\n    \"salary\": 345.34\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:3000/jobs/exp/4",
+							"raw": "http://localhost:3000/jobs",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"jobs",
-								"exp",
-								"4"
+								"jobs"
 							]
 						}
 					},
 					"response": [
 						{
-							"name": "Default: Update Job Exp",
+							"name": "Experience Field: String type Number",
 							"originalRequest": {
-								"method": "PUT",
+								"method": "POST",
 								"header": [],
-								"url": {
-									"raw": "http://localhost:3000/jobs/exp/4",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"jobs",
-										"exp",
-										"4"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "217"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"d9-OKS6yfsGsQBjBiGwTn2lcAzq31s\""
-								},
-								{
-									"key": "Date",
-									"value": "Sun, 01 May 2022 22:10:28 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"companyName\": \"Marval\",\n    \"title\": \"Dr. Strange\",\n    \"email\": \"abc@mail.com\",\n    \"type\": 1,\n    \"experience\": 1,\n    \"salary\": 450.65,\n    \"tags\": [\n        \"nodejs\",\n        \"nestjs\",\n        \"rest api\"\n    ],\n    \"isActive\": true,\n    \"refId\": \"d53284ea-9150-422e-895f-93917d3d9ab7\",\n    \"id\": 4\n}"
-						},
-						{
-							"name": "Default and Transform: Update Job Exp",
-							"originalRequest": {
-								"method": "PUT",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:3000/jobs/exp/4?exp=4",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"jobs",
-										"exp",
-										"4"
-									],
-									"query": [
-										{
-											"key": "exp",
-											"value": "4"
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"companyName\": \"Marvel\",\n    \"title\": \"Thor Love and Thunder\",\n    \"email\": \"email@email.com\",\n    \"experience\": \"5\",\n    \"salary\": 345.34\n}",
+									"options": {
+										"raw": {
+											"language": "json"
 										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/jobs",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"jobs"
 									]
 								}
 							},
-							"status": "OK",
-							"code": 200,
+							"status": "Created",
+							"code": 201,
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
@@ -602,15 +539,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "217"
+									"value": "157"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"d9-/RHTF78d8vNy/hGPYAbEqmi7CHQ\""
+									"value": "W/\"9d-2ffN3asD6LqwUkh+97Grm7m4OEs\""
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 01 May 2022 22:11:41 GMT"
+									"value": "Sat, 09 Jul 2022 21:21:34 GMT"
 								},
 								{
 									"key": "Connection",
@@ -622,7 +559,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"companyName\": \"Marval\",\n    \"title\": \"Dr. Strange\",\n    \"email\": \"abc@mail.com\",\n    \"type\": 1,\n    \"experience\": 4,\n    \"salary\": 450.65,\n    \"tags\": [\n        \"nodejs\",\n        \"nestjs\",\n        \"rest api\"\n    ],\n    \"isActive\": true,\n    \"refId\": \"d53284ea-9150-422e-895f-93917d3d9ab7\",\n    \"id\": 4\n}"
+							"body": "{\n    \"companyName\": \"Marvel\",\n    \"title\": \"Thor Love and Thunder\",\n    \"email\": \"email@email.com\",\n    \"experience\": \"5\",\n    \"salary\": 345.34,\n    \"id\": 1,\n    \"type\": 1,\n    \"tags\": [],\n    \"isActive\": true\n}"
 						}
 					]
 				}

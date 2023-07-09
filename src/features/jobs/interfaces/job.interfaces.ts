@@ -1,6 +1,6 @@
 import { JobType } from '../constants/jobs.constants';
 
-export class Job {
+export interface Job {
   companyName: string;
   title: string;
   email: string;

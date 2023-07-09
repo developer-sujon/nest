@@ -1,70 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { JOBS } from './job.data';
-import { Job } from './interfaces/job.interfaces';
-import { JobType } from './constants/jobs.constants';
+import { CreateJobDto } from './dto/create-job.dto';
 
 @Injectable()
 export class JobsService {
-  private readonly JOBS = new Map<number, Job>();
-
-  constructor() {
-    JOBS.forEach((job) => this.JOBS.set(job.id, job));
-    console.log(this.JOBS);
-  }
-
-  findById(id: number) {
-    return this.JOBS.get(id);
-  }
-
-  findByIds(ids: number[]) {
-    return JOBS.filter((job) => ids.includes(job.id));
-  }
-
-  findByRefId(refId: string) {
-    return JOBS.find((job) => job.refId === refId);
-  }
-
-  incSalaryByJobId(id: number, inc: number) {
-    const job = this.JOBS.get(id);
-
-    job.salary += inc;
-
-    return job;
-  }
-
-  toggleJobActiveStatus(id: number, active: boolean) {
-    const job = this.JOBS.get(id);
-
-    if (!job) {
-      return;
-    }
-
-    job.isActive = active;
-
-    return job;
-  }
-
-  toggleJobType(id: number, type: JobType) {
-    const job = this.JOBS.get(id);
-
-    if (!job) {
-      return;
-    }
-
-    job.type = type;
-
-    return job;
-  }
-
-  setJobExp(id: number, exp: number) {
-    const job = this.JOBS.get(id);
-
-    if (!job) {
-      return;
-    }
-
-    job.experience = exp;
-
-    return job;
+  createJob(createJobDto: CreateJobDto) {
+    return JSON.stringify(createJobDto);
   }
 }
