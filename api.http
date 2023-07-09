@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ###addBook
 POST http://localhost:3000/auth/signup
 Content-Type: application/json
@@ -35,3 +36,25 @@ Content-Type: application/json
 
 ###deleteBook
 DELETE http://localhost:3000/tasks/d98c928a-7941-40db-baad-d2c9630cef21
+=======
+###signin
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "mobile": "+8801777777775",
+    "password": "seyam1234@"
+}
+
+###addTask
+POST http://localhost:3000/tasks
+Content-Type: application/json
+
+{
+    "mobile": "+8801777777775",
+    "password": "seyam1234@2"
+}
+
+###getTasks
+GET http://localhost:3000/tasks
+>>>>>>> aa25427e597f70f7a9356dac645004278e5842ec
