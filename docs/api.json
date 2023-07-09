@@ -1,12 +1,7 @@
 {
 	"info": {
-<<<<<<< HEAD
-		"_postman_id": "e96fefbf-8761-465a-b655-0927d10ec3cf",
-		"name": "auth local",
-=======
 		"_postman_id": "d76b0c41-633b-4180-babf-fd584904229c",
-		"name": "Decorator Based Validation",
->>>>>>> c7891e74900da3085a563eca202994451c857df6
+		"name": "ArgumentsHost & ExecutionContext",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "20484049"
 	},
