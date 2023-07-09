@@ -1,4 +1,4 @@
 export enum JobType {
-  FULL_TIME = 1,
+  FULL_TIME = 0,
   PART_TIME,
 }
