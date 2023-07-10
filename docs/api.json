@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "d76b0c41-633b-4180-babf-fd584904229c",
-		"name": "ArgumentsHost & ExecutionContext",
+		"_postman_id": "c8c00b8d-8cf8-4ae2-b3c0-fcc9772e6fc4",
+		"name": "Middleware",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "20484049"
 	},
@@ -10,584 +10,39 @@
 			"name": "Jobs",
 			"item": [
 				{
-					"name": "Create Job",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"companyName\": \"Marvel\",\n    \"title\": \"Thor Love and Thunder\",\n    \"email\": \"email@email.com\",\n    \"experience\": 5,\n    \"tags\": [\"nodejs\"],\n    \"salary\": 345.34,\n    \"location\": { \"city\": \"Kashmir\", \"country\": \"India\"  }\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/jobs",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"jobs"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Default Values: Create Job",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"companyName\": \"Marvel\",\n    \"title\": \"Thor Love and Thunder\",\n    \"email\": \"email@email.com\",\n    \"experience\": 5,\n    \"tags\": [\"nodejs\"],\n    \"salary\": 345.34,\n    \"location\": { \"city\": \"Kashmir\", \"country\": \"India\"  }\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:3000/jobs",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"jobs"
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "203"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"cb-JrDy0hzFMrUmgiEZjyJkAkey3ww\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 09 Jul 2022 21:54:10 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"companyName\": \"Marvel\",\n    \"title\": \"Thor Love and Thunder\",\n    \"email\": \"email@email.com\",\n    \"experience\": 5,\n    \"tags\": [],\n    \"salary\": 345.34,\n    \"location\": {\n        \"city\": \"Kashmir\",\n        \"country\": \"India\"\n    },\n    \"id\": 1,\n    \"type\": 1,\n    \"isActive\": true\n}"
-						},
-						{
-							"name": "With Location and Array: Create Job",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "[{\n    \"companyName\": \"Marvel\",\n    \"title\": \"Thor Love and Thunder\",\n    \"email\": \"email@email.com\",\n    \"experience\": 5,\n    \"tags\": [\"nodejs\"],\n    \"salary\": 345.34,\n    \"location\": [{ \"city\": \"Kashmir\", \"country\": \"India\"  }]\n}]",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:3000/jobs",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"jobs"
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "16"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"10-oV4hJxRVSENxc/wX8+mA4/Pe4tA\""
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 02 May 2022 02:12:33 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"success\": true\n}"
-						},
-						{
-							"name": "Validation Errors",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"companyName\": \"Marvel\",\n    \"title\": \"Thor Love and Thunder\",\n    \"email\": \"email@email.com\",\n    \"type\": \"FREELANCER\",\n    \"tags\": [12, 45],\n    \"experience\": \"xyz\",\n    \"salary\": 345.34\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:3000/jobs",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"jobs"
-									]
-								}
-							},
-							"status": "Bad Request",
-							"code": 400,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "229"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"e5-Ltg75CJ/RUFSVo00oA+tfV95nxU\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 09 Jul 2022 21:52:21 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"statusCode\": 400,\n    \"message\": [\n        \"type must be one of the following values: 1, 2, FULL_TIME, PART_TIME\",\n        \"experience must be an integer number\",\n        \"each value in tags must be a string\",\n        \"location must be an object\"\n    ],\n    \"error\": \"Bad Request\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Create Multiple Jobs",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "[{\n    \"companyName\": \"Marvel\",\n    \"title\": \"Thor Love and Thunder\",\n    \"email\": \"email@email.com\",\n    \"experience\": 5,\n    \"tags\": [\"nodejs\"],\n    \"salary\": 345.34,\n    \"location\": [{ \"city\": \"Kashmir\", \"country\": \"India\"  }]\n},\n{\n    \"companyName\": \"Netflix\",\n    \"title\": \"Stranger Things\",\n    \"email\": \"strange@things.com\",\n    \"experience\": 4,\n    \"tags\": [\"will\", \"el\", \"vecna\"],\n    \"salary\": 1111.1111,\n    \"location\": [{ \"city\": \"Las Vegas\", \"country\": \"USA\"  }]\n}\n]",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/jobs/create-many",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"jobs",
-								"create-many"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Create Multiple Jobs",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "[{\n    \"companyName\": \"Marvel\",\n    \"title\": \"Thor Love and Thunder\",\n    \"email\": \"email@email.com\",\n    \"experience\": 5,\n    \"tags\": [\"nodejs\"],\n    \"salary\": 345.34,\n    \"location\": [{ \"city\": \"Kashmir\", \"country\": \"India\"  }]\n},\n{\n    \"companyName\": \"Netflix\",\n    \"title\": \"Stranger Things\",\n    \"email\": \"strange@things.com\",\n    \"experience\": 4,\n    \"tags\": [\"will\", \"el\", \"vecna\"],\n    \"salary\": 1111.1111,\n    \"location\": [{ \"city\": \"Las Vegas\", \"country\": \"USA\"  }]\n}\n]",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:3000/jobs/create-many",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"jobs",
-										"create-many"
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "427"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"1ab-FMhFDQX1oiavCjiNpUtUyrqZPlc\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 09 Jul 2022 22:05:27 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"0\": {\n        \"companyName\": \"Marvel\",\n        \"title\": \"Thor Love and Thunder\",\n        \"email\": \"email@email.com\",\n        \"experience\": 5,\n        \"tags\": [\n            \"nodejs\"\n        ],\n        \"salary\": 345.34,\n        \"location\": [\n            {\n                \"city\": \"Kashmir\",\n                \"country\": \"India\"\n            }\n        ]\n    },\n    \"1\": {\n        \"companyName\": \"Netflix\",\n        \"title\": \"Stranger Things\",\n        \"email\": \"strange@things.com\",\n        \"experience\": 4,\n        \"tags\": [\n            \"will\",\n            \"el\",\n            \"vecna\"\n        ],\n        \"salary\": 1111.1111,\n        \"location\": [\n            {\n                \"city\": \"Las Vegas\",\n                \"country\": \"USA\"\n            }\n        ]\n    },\n    \"id\": 2,\n    \"type\": 1,\n    \"tags\": [],\n    \"isActive\": true\n}"
-						},
-						{
-							"name": "Validation Errors",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "[{\n    \"companyName\": \"Marvel\",\n    \"title\": \"Thor Love and Thunder\",\n    \"email\": \"email@email.com\",\n    \"experience\": 5,\n    \"tags\": [\"nodejs\"],\n    \"location\": [{ \"city\": \"Kashmir\" }]\n},\n{\n    \"companyName\": \"Netflix\",\n    \"title\": \"Stranger Things\",\n    \"experience\": 4,\n    \"tags\": [\"will\", \"el\", \"vecna\"],\n    \"salary\": 1111.1111,\n    \"location\": [{ \"city\": \"Las Vegas\", \"country\": \"USA\"  }]\n}\n]",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:3000/jobs/create-many",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"jobs",
-										"create-many"
-									]
-								}
-							},
-							"status": "Bad Request",
-							"code": 400,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "118"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"76-cNmXyiTqd01eG0L9ErEpn1QFDJQ\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 09 Jul 2022 22:05:49 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"statusCode\": 400,\n    \"message\": [\n        \"salary must be a number conforming to the specified constraints\"\n    ],\n    \"error\": \"Bad Request\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Create Job with Location Array",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"companyName\": \"Marvel\",\n    \"title\": \"Thor Love and Thunder\",\n    \"email\": \"email@email.com\",\n    \"experience\": 5,\n    \"tags\": [\"nodejs\"],\n    \"salary\": 345.34,\n    \"location\": [{ \"city\": \"Kashmir\", \"country\": \"India\"  }]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/jobs/with-locations",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"jobs",
-								"with-locations"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Create Job with Location Array",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"companyName\": \"Marvel\",\n    \"title\": \"Thor Love and Thunder\",\n    \"email\": \"email@email.com\",\n    \"experience\": 5,\n    \"tags\": [\"nodejs\"],\n    \"salary\": 345.34,\n    \"location\": [{ \"city\": \"Kashmir\", \"country\": \"India\"  }]\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:3000/jobs/with-locations",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"jobs",
-										"with-locations"
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "205"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"cd-6bfgSqMLOJtMV0GD+FZ4V6XlvAI\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 09 Jul 2022 21:57:42 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"companyName\": \"Marvel\",\n    \"title\": \"Thor Love and Thunder\",\n    \"email\": \"email@email.com\",\n    \"experience\": 5,\n    \"tags\": [],\n    \"salary\": 345.34,\n    \"location\": [\n        {\n            \"city\": \"Kashmir\",\n            \"country\": \"India\"\n        }\n    ],\n    \"id\": 1,\n    \"type\": 1,\n    \"isActive\": true\n}"
-						},
-						{
-							"name": "Validation Errors: Location Object",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"companyName\": \"Marvel\",\n    \"title\": \"Thor Love and Thunder\",\n    \"email\": \"email@email.com\",\n    \"experience\": 5,\n    \"tags\": [\"nodejs\"],\n    \"salary\": 345.34,\n    \"location\": [{ \"country\": \"India\" }]\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:3000/jobs/with-locations",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"jobs",
-										"with-locations"
-									]
-								}
-							},
-							"status": "Bad Request",
-							"code": 400,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "125"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"7d-9kxapKhDRqwpTk9yMv5PBWzRm78\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 09 Jul 2022 21:58:19 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"statusCode\": 400,\n    \"message\": [\n        \"location.0.city should not be empty\",\n        \"location.0.city must be a string\"\n    ],\n    \"error\": \"Bad Request\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Find Jobs - Query Params",
+					"name": "Get Job Refs",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/jobs?page=1&limit=11",
+							"raw": "http://localhost:3000/jobs/refs",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"jobs"
-							],
-							"query": [
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "limit",
-									"value": "11"
-								}
+								"jobs",
+								"refs"
 							]
 						}
 					},
 					"response": [
 						{
-							"name": "Find Jobs: Query Params",
+							"name": "Get Job Refs",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/jobs?page=1&limit=11",
+									"raw": "http://localhost:3000/jobs/refs",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"port": "3000",
 									"path": [
-										"jobs"
-									],
-									"query": [
-										{
-											"key": "page",
-											"value": "1"
-										},
-										{
-											"key": "limit",
-											"value": "11"
-										}
+										"jobs",
+										"refs"
 									]
 								}
 							},
@@ -605,15 +60,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "16"
+									"value": "78"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"10-oV4hJxRVSENxc/wX8+mA4/Pe4tA\""
+									"value": "W/\"4e-sBcSSlBHJ82CogZqpLrevk4QIIE\""
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 09 Jul 2022 22:09:07 GMT"
+									"value": "Fri, 05 Aug 2022 21:23:41 GMT"
 								},
 								{
 									"key": "Connection",
@@ -625,208 +80,15 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"success\": true\n}"
+							"body": "{\n    \"success\": true,\n    \"message\": \"Job refs list\",\n    \"userAgent\": \"PostmanRuntime/7.29.2\"\n}"
 						},
 						{
-							"name": "Validation Errors: Query Params",
+							"name": "W/T UserAgent Middleware",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/jobs",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"jobs"
-									]
-								}
-							},
-							"status": "Bad Request",
-							"code": 400,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "152"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"98-qXH9F8Y5iKzDZ84JDcsC8Sxp2Ic\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 09 Jul 2022 22:07:45 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"statusCode\": 400,\n    \"message\": [\n        \"Page must not be empty\",\n        \"Page must be a number\",\n        \"Limit must not be empty\",\n        \"Limit must be a number\"\n    ],\n    \"error\": \"Bad Request\"\n}"
-						},
-						{
-							"name": "Validation Error: limit",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:3000/jobs?page=1",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"jobs"
-									],
-									"query": [
-										{
-											"key": "page",
-											"value": "1"
-										}
-									]
-								}
-							},
-							"status": "Bad Request",
-							"code": 400,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "103"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"67-VRY2TaeRALuGxEVk5jP55fucmQU\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 09 Jul 2022 22:08:17 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"statusCode\": 400,\n    \"message\": [\n        \"Limit must not be empty\",\n        \"Limit must be a number\"\n    ],\n    \"error\": \"Bad Request\"\n}"
-						},
-						{
-							"name": "Validation Error: page",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:3000/jobs?limit=11",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"jobs"
-									],
-									"query": [
-										{
-											"key": "limit",
-											"value": "11"
-										}
-									]
-								}
-							},
-							"status": "Bad Request",
-							"code": 400,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "101"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"65-ybPFbB3pnpR25t2b+tLaoNUXaaQ\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 09 Jul 2022 22:08:45 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"statusCode\": 400,\n    \"message\": [\n        \"Page must not be empty\",\n        \"Page must be a number\"\n    ],\n    \"error\": \"Bad Request\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Find Job | transform - ValidationPipe Option",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/jobs/search/12",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"jobs",
-								"search",
-								"12"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Find Job | transform - ValidationPipe Option",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:3000/jobs/search/12",
+									"raw": "http://localhost:3000/jobs/refs",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -834,181 +96,12 @@
 									"port": "3000",
 									"path": [
 										"jobs",
-										"search",
-										"12"
+										"refs"
 									]
 								}
 							},
 							"status": "OK",
 							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "27"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"1b-q1gMCC+MnMbEyWVUBQ7w0lE2R5g\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 09 Jul 2022 22:11:47 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"success\": true,\n    \"jobId\": 12\n}"
-						}
-					]
-				},
-				{
-					"name": "Update Job | dismissDefaultMessages - ValidationPipe Option",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"companyName\": \"Marvel\",\n    \"title\": \"Thor Love and Thunder\",\n    \"experience\": 5,\n    \"salary\": 345.34,\n    \"location\": { \"city\": \"Kashmir\", \"country\": \"India\"  }\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/jobs/12",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"jobs",
-								"12"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Update Job | dismissDefaultMessages - ValidationPipe Option",
-							"originalRequest": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"companyName\": \"Marvel\",\n    \"title\": \"Thor Love and Thunder\",\n    \"experience\": 5,\n    \"salary\": 345.34,\n    \"location\": { \"city\": \"Kashmir\", \"country\": \"India\"  }\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:3000/jobs/12",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"jobs",
-										"12"
-									]
-								}
-							},
-							"status": "Bad Request",
-							"code": 400,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "61"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"3d-3Ez/eMwZ5D3tFa0VBbl7b84u/HI\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 09 Jul 2022 22:40:26 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"statusCode\": 400,\n    \"message\": [\n        \"\",\n        \"\",\n        \"\"\n    ],\n    \"error\": \"Bad Request\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Find Job | disableErrorMessages - ValidationPipe Option",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/jobs/with-tags",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"jobs",
-								"with-tags"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Find Job | disableErrorMessages - ValidationPipe Option",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:3000/jobs/with-tags",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"jobs",
-										"with-tags"
-									]
-								}
-							},
-							"status": "Bad Request",
-							"code": 400,
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
@@ -1025,11 +118,11 @@
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"2a-+qJhz/sMu76JG2EONg7/1lLVCFA\""
+									"value": "W/\"2a-+7skROrhqocQSZgpRoBldklJo44\""
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 09 Jul 2022 22:17:38 GMT"
+									"value": "Fri, 05 Aug 2022 21:27:30 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1041,17 +134,17 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"statusCode\": 400,\n    \"message\": \"Bad Request\"\n}"
+							"body": "{\n    \"success\": true,\n    \"message\": \"Job refs list\"\n}"
 						}
 					]
 				},
 				{
-					"name": "Find Job | whitelist - ValidationPipe Option",
+					"name": "Post Job Refs",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/jobs/with-names?page=1&limit=10&order=asc",
+							"raw": "http://localhost:3000/jobs/refs",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1059,32 +152,18 @@
 							"port": "3000",
 							"path": [
 								"jobs",
-								"with-names"
-							],
-							"query": [
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "limit",
-									"value": "10"
-								},
-								{
-									"key": "order",
-									"value": "asc"
-								}
+								"refs"
 							]
 						}
 					},
 					"response": [
 						{
-							"name": "Find Job | whitelist - ValidationPipe Option",
+							"name": "Post Job Refs",
 							"originalRequest": {
-								"method": "GET",
+								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/jobs/with-names?page=1&limit=10&order=asc",
+									"raw": "http://localhost:3000/jobs/refs",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -1092,21 +171,136 @@
 									"port": "3000",
 									"path": [
 										"jobs",
-										"with-names"
+										"refs"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "80"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"50-JwF0KHZC9lTGiH4h0KsjIJmOxgA\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Aug 2022 21:23:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Job ref created\",\n    \"userAgent\": \"PostmanRuntime/7.29.2\"\n}"
+						},
+						{
+							"name": "W/T UserAgent Middleware",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/jobs/refs",
+									"protocol": "http",
+									"host": [
+										"localhost"
 									],
-									"query": [
-										{
-											"key": "page",
-											"value": "1"
-										},
-										{
-											"key": "limit",
-											"value": "10"
-										},
-										{
-											"key": "order",
-											"value": "asc"
-										}
+									"port": "3000",
+									"path": [
+										"jobs",
+										"refs"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "44"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2c-mDNydMCPPt4eAwEnVOr5TMaIcBI\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Aug 2022 21:28:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Job ref created\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Job",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/jobs/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"jobs",
+								"11"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Job",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/jobs/11",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"jobs",
+										"11"
 									]
 								}
 							},
@@ -1124,15 +318,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "68"
+									"value": "87"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"44-iUjfc+S1wPliWYw15htDsRA2KvI\""
+									"value": "W/\"57-pn538NPvHrUflXkaUq8158LHdCU\""
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 09 Jul 2022 22:30:57 GMT"
+									"value": "Fri, 05 Aug 2022 21:25:03 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1144,42 +338,15 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"success\": true,\n    \"query\": {\n        \"page\": 1,\n        \"limit\": 10\n    },\n    \"whitelist\": [\n        \"order\"\n    ]\n}"
-						}
-					]
-				},
-				{
-					"name": "Find Job | skipMissingProperties - ValidationPipe Option",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/jobs/with-city?page=1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"jobs",
-								"with-city"
-							],
-							"query": [
-								{
-									"key": "page",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": [
+							"body": "{\n    \"success\": true,\n    \"jobId\": 11,\n    \"message\": \"Job updated\",\n    \"userAgent\": \"PostmanRuntime/7.29.2\"\n}"
+						},
 						{
-							"name": "Find Job | skipMissingProperties - ValidationPipe Option",
+							"name": "W/T UserAgent Middleware",
 							"originalRequest": {
-								"method": "GET",
+								"method": "PUT",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/jobs/with-city?page=1",
+									"raw": "http://localhost:3000/jobs/11",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -1187,13 +354,7 @@
 									"port": "3000",
 									"path": [
 										"jobs",
-										"with-city"
-									],
-									"query": [
-										{
-											"key": "page",
-											"value": "1"
-										}
+										"11"
 									]
 								}
 							},
@@ -1211,15 +372,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "60"
+									"value": "51"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"3c-cFQRWR0JI1+WucYsEBI8NF1M+NE\""
+									"value": "W/\"33-Qx6AvBzbElpeMsxIBTSLo2AGD8w\""
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 09 Jul 2022 22:34:31 GMT"
+									"value": "Fri, 05 Aug 2022 21:28:36 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1231,69 +392,52 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"success\": true,\n    \"query\": {\n        \"page\": 1\n    },\n    \"missingProps\": [\n        \"limit\"\n    ]\n}"
+							"body": "{\n    \"success\": true,\n    \"jobId\": 11,\n    \"message\": \"Job updated\"\n}"
 						}
 					]
-				},
+				}
+			]
+		},
+		{
+			"name": "Interviews",
+			"item": [
 				{
-					"name": "Find Job | stopAtFirstError - ValidationPipe Option",
+					"name": "Get Interviews",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/jobs/with-country?&limit=10",
+							"raw": "http://localhost:3000/interviews",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"jobs",
-								"with-country"
-							],
-							"query": [
-								{
-									"key": null,
-									"value": null
-								},
-								{
-									"key": "limit",
-									"value": "10"
-								}
+								"interviews"
 							]
 						}
 					},
 					"response": [
 						{
-							"name": "Find Job | stopAtFirstError - ValidationPipe Option",
+							"name": "Get Interviews",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/jobs/with-country?&limit=10",
+									"raw": "http://localhost:3000/interviews",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"port": "3000",
 									"path": [
-										"jobs",
-										"with-country"
-									],
-									"query": [
-										{
-											"key": null,
-											"value": null
-										},
-										{
-											"key": "limit",
-											"value": "10"
-										}
+										"interviews"
 									]
 								}
 							},
-							"status": "Bad Request",
-							"code": 400,
+							"status": "OK",
+							"code": 200,
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
@@ -1306,15 +450,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "77"
+									"value": "79"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"4d-mf9enX5VfA56mbICJ6wFqvHtHSQ\""
+									"value": "W/\"4f-MoeV8V6oI2m/8dAnDCDM05E8NN0\""
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 09 Jul 2022 22:37:36 GMT"
+									"value": "Fri, 05 Aug 2022 21:26:20 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1326,7 +470,189 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"statusCode\": 400,\n    \"message\": [\n        \"Page must not be empty\"\n    ],\n    \"error\": \"Bad Request\"\n}"
+							"body": "{\n    \"success\": true,\n    \"message\": \"Interview list\",\n    \"userAgent\": \"PostmanRuntime/7.29.2\"\n}"
+						},
+						{
+							"name": "W/T UserAgent Middleware",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/interviews",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"interviews"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-1FxPKyQa2TVag9HdXak5PELylro\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Aug 2022 21:29:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Interview list\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Schedule Interview",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/interviews/schedule",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"interviews",
+								"schedule"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Schedule Interview",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/interviews/schedule",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"interviews",
+										"schedule"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "83"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"53-U9+nY7YicYwaJxxxO5iKRzWTigw\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Aug 2022 21:26:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Inteview scheduled\",\n    \"userAgent\": \"PostmanRuntime/7.29.2\"\n}"
+						},
+						{
+							"name": "W/T UserAgent Middleware",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/interviews/schedule",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"interviews",
+										"schedule"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "47"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f-MTmThCpgU3fHU8OJDaAkoX3TRc8\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Aug 2022 21:29:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Inteview scheduled\"\n}"
 						}
 					]
 				}
